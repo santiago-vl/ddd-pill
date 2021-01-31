@@ -1,0 +1,7 @@
+Description:
+  As a user
+  I want to register in the system
+  To access to the system with my credentials
+
+Acceptance criteria:
+  * A user will be registered in the system given an email and a password
