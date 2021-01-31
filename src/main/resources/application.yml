@@ -1,0 +1,12 @@
+server:
+  port: 8089
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: ddd-pill-legacy-db
+      authentication-database: admin
+      username: admin
+      password: password

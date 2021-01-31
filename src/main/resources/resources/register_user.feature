@@ -1,4 +1,3 @@
-@rest
 Feature: Registers a user
   As a user
   I want to register in the system
@@ -6,16 +5,14 @@ Feature: Registers a user
 
   # Happy path scenarios
 
-  @important @graphql
   Scenario: registers a user
     Given the email "foo@bar.com" is selected
     And the password "kI3!SkX2eF1?" is selected
     When I register the user
-    Then the user is not registered
+    Then the user is registered
 
   # Unhappy paths scenarios
 
-  @wip
   Scenario: fails with empty name
     Given the email "" is selected
     And the password "kI3!SkX2eF1?" is selected
@@ -23,7 +20,6 @@ Feature: Registers a user
     Then the user is not registered
     And a validation error is thrown
 
-  @wip
   Scenario: fails with empty password
     Given the email "foo@bar.com" is selected
     And the password "" is selected
@@ -31,7 +27,6 @@ Feature: Registers a user
     Then the user is not registered
     And a validation error is thrown
 
-  @skip
   Scenario Outline: fails with invalid email
     Given the email "<emailInput>" is selected
     And the password "password" is selected
@@ -51,7 +46,6 @@ Feature: Registers a user
   #   * Contains at least one lower alpha char and one upper alpha char
   #   * Contains at least one char within a set of special chars (@#%$^ etc.)
   #   * Does not contain space, tab, etc...
-  @skip
   Scenario Outline: fails with invalid password
     Given the email "foo@bar.com" is selected
     And the password "<passwordInput>" is selected
@@ -67,7 +61,6 @@ Feature: Registers a user
       | Cristiano Ronaldo CR |
       | cr7!!!!!!!!          |
 
-  @skip
   Scenario: fails when user is already registered
     Given a registered user with email "registered-user@bar.com"
     And the email "registered-user@bar.com" is selected
@@ -75,3 +68,4 @@ Feature: Registers a user
     When I register the user
     Then the user is not registered
     And a duplication error is thrown
+

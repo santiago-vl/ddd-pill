@@ -1,0 +1,11 @@
+version: '3'
+services:
+  database:
+    image: 'mongo'
+    container_name: 'ddd-pill-legacy-mongo-container'
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    ports:
+      - '27017-27019:27017-27019'
+
