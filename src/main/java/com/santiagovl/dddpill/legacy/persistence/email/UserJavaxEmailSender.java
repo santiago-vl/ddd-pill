@@ -21,7 +21,7 @@ public class UserJavaxEmailSender {
     try {
       final MimeMessage message = new MimeMessage(session);
       message.setFrom(new InternetAddress("foo@gmail.com"));
-      message.addRecipient(Message.RecipientType.TO, new InternetAddress(user.getEmail()));
+      message.addRecipient(Message.RecipientType.TO, new InternetAddress(user.getEmail().getEmail()));
       message.setSubject("Verification code");
       message.setText(String.format("%06d", new Random().nextInt(user.getCreatedAt().getNano())));
       // Transport.send(message);

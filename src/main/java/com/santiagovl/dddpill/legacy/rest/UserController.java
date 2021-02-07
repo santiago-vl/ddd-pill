@@ -22,7 +22,7 @@ public final class UserController {
   ResponseEntity<String> registerUser(final @RequestBody RestUser restUser) {
     final User user = userRestConverter.convert(restUser);
     final User createdUser = (User) registerUser.register(user);
-    return ResponseEntity.ok(createdUser.getId());
+    return ResponseEntity.ok(createdUser.getId().getIdentifier());
   }
 
 }

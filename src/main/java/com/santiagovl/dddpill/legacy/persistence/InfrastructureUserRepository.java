@@ -1,5 +1,6 @@
 package com.santiagovl.dddpill.legacy.persistence;
 
+import com.santiagovl.dddpill.legacy.domain.model.user.Email;
 import com.santiagovl.dddpill.legacy.domain.model.user.User;
 import com.santiagovl.dddpill.legacy.domain.model.user.repositories.UserRepository;
 import com.santiagovl.dddpill.legacy.persistence.email.UserJavaxEmailSender;
@@ -20,14 +21,14 @@ public class InfrastructureUserRepository implements UserRepository {
   private final UserRestSpamRepository userRestSpamRepository;
 
   @Override
-  public User save(User user) {
+  public User save(final User user) {
     userJavaxEmailSender.send(user);
     userRestSpamRepository.register(user);
     return userMongoRepository.save(user);
   }
 
   @Override
-  public Optional<User> findByEmail(String email) {
+  public Optional<User> findByEmail(final Email email) {
     return userMongoRepository.findByEmail(email);
   }
 }

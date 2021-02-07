@@ -13,7 +13,7 @@ public class UserRestSpamRepository {
   private final RestTemplate restTemplate;
 
   public void register(final User user) {
-    final HttpEntity<String> body = new HttpEntity<>(user.getEmail());
+    final HttpEntity<String> body = new HttpEntity<>(user.getEmail().getEmail());
     restTemplate.postForEntity("http://www.spam.com/email", body, String.class);
   }
 

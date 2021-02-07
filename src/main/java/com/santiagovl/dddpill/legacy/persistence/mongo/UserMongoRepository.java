@@ -1,5 +1,6 @@
 package com.santiagovl.dddpill.legacy.persistence.mongo;
 
+import com.santiagovl.dddpill.legacy.domain.model.user.Email;
 import com.santiagovl.dddpill.legacy.domain.model.user.User;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -25,8 +26,8 @@ public class UserMongoRepository {
     return userMongoConverter.reverse().convert(createdMongoUser);
   }
 
-  public Optional<User> findByEmail(final String email) {
-    Criteria emailCriteria = Criteria.where("email").is(email);
+  public Optional<User> findByEmail(final Email email) {
+    Criteria emailCriteria = Criteria.where("email").is(email.getEmail());
     final Query findUserByEmailQuery = new Query().addCriteria(emailCriteria);
     final Optional<MongoUser> foundLegacyMongoUser =
         mongoTemplate.find(findUserByEmailQuery, MongoUser.class).stream().findAny();
