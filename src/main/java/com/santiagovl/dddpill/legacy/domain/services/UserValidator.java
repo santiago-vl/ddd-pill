@@ -9,9 +9,7 @@ import com.santiagovl.dddpill.legacy.domain.model.user.repositories.UserReposito
 import java.util.Optional;
 import java.util.regex.Pattern;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
-@Component
 @RequiredArgsConstructor
 public class UserValidator {
 

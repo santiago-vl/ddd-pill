@@ -1,8 +1,7 @@
 package com.santiagovl.dddpill.legacy.rest;
 
+import com.santiagovl.dddpill.legacy.application.user.RegisterUser;
 import com.santiagovl.dddpill.legacy.domain.model.user.User;
-import com.santiagovl.dddpill.legacy.domain.model.user.repositories.UserRepository;
-import com.santiagovl.dddpill.legacy.domain.services.UserValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,21 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public final class UserController {
 
-  private final UserValidator userValidator;
-
-  private final UserRepository userRepository;
-
   private final UserRestConverter userRestConverter;
 
+  private final RegisterUser registerUser;
+
   @PostMapping
-  ResponseEntity<String> registerUser(@RequestBody RestUser restUser) {
+  ResponseEntity<String> registerUser(final @RequestBody RestUser restUser) {
     final User user = userRestConverter.convert(restUser);
-
-    userValidator.validate(user);
-
-    final User createdUser = userRepository.save(user);
-
+    final User createdUser = (User) registerUser.register(user);
     return ResponseEntity.ok(createdUser.getId());
   }
 
 }
+
