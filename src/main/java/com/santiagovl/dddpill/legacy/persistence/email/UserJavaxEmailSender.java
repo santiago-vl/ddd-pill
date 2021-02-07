@@ -1,6 +1,6 @@
 package com.santiagovl.dddpill.legacy.persistence.email;
 
-import com.santiagovl.dddpill.legacy.User;
+import com.santiagovl.dddpill.legacy.domain.model.user.User;
 import java.util.Properties;
 import java.util.Random;
 import javax.mail.Message;
@@ -11,9 +11,8 @@ import javax.mail.internet.MimeMessage;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserJavaxEmailRepository implements UserEmailRepository {
+public class UserJavaxEmailSender {
 
-  @Override
   public void send(final User user) {
     // Send a verification code via email
     final Properties properties = System.getProperties();

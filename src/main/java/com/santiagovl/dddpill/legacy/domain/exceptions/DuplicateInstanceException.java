@@ -1,4 +1,4 @@
-package com.santiagovl.dddpill.legacy.exceptions;
+package com.santiagovl.dddpill.legacy.domain.exceptions;
 
 public class DuplicateInstanceException extends RuntimeException {
 

@@ -1,7 +1,7 @@
 package com.santiagovl.dddpill.legacy.rest;
 
 import com.google.common.base.Converter;
-import com.santiagovl.dddpill.legacy.User;
+import com.santiagovl.dddpill.legacy.domain.model.user.User;
 import org.springframework.stereotype.Component;
 
 @Component

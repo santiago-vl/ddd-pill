@@ -1,4 +1,4 @@
-package com.santiagovl.dddpill.legacy;
+package com.santiagovl.dddpill.legacy.domain.model.user;
 
 import java.time.Instant;
 import lombok.Builder;

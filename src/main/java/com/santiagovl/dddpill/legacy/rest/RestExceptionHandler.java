@@ -1,7 +1,7 @@
 package com.santiagovl.dddpill.legacy.rest;
 
-import com.santiagovl.dddpill.legacy.exceptions.DuplicateInstanceException;
-import com.santiagovl.dddpill.legacy.exceptions.InvalidParameterException;
+import com.santiagovl.dddpill.legacy.domain.exceptions.DuplicateInstanceException;
+import com.santiagovl.dddpill.legacy.domain.exceptions.InvalidParameterException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
