@@ -1,5 +1,6 @@
 package com.santiagovl.dddpill.legacy;
 
+import java.time.Instant;
 import lombok.Builder;
 import lombok.Data;
 
@@ -7,15 +8,12 @@ import lombok.Data;
 @Builder
 public class User {
 
+  private String id;
+
   private String email;
 
   private String password;
 
-  public MongoUser toMongoDocument() {
-    return MongoUser.builder()
-        .email(email)
-        .password(password)
-        .build();
-  }
+  private Instant createdAt;
 
 }

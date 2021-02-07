@@ -1,4 +1,4 @@
-package com.santiagovl.dddpill.legacy;
+package com.santiagovl.dddpill.legacy.rest;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

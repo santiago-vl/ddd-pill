@@ -1,4 +1,4 @@
-package com.santiagovl.dddpill.legacy;
+package com.santiagovl.dddpill.legacy.persistence.mongo;
 
 import static java.time.Instant.now;
 
