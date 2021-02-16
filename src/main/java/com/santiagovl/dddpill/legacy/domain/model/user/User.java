@@ -3,8 +3,12 @@ package com.santiagovl.dddpill.legacy.domain.model.user;
 import static java.time.Instant.now;
 import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
 
+import com.santiagovl.dddpill.legacy.domain.events.Event;
+import com.santiagovl.dddpill.legacy.domain.events.UserSaved;
 import com.santiagovl.dddpill.legacy.domain.exceptions.InvalidParameterException;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 public class User {
 
@@ -16,11 +20,14 @@ public class User {
 
   private final Instant createdAt;
 
+  private final List<Event> events;
+
   private User(final UserId id, final Email email, final Password password, final Instant createdAt) {
     this.id = id;
     changeEmail(email);
     changePassword(password);
     this.createdAt = defaultIfNull(createdAt, now());
+    events = new ArrayList<>();
   }
 
   public void changeEmail(final Email email) {
@@ -37,6 +44,10 @@ public class User {
     this.password = password;
   }
 
+  public void isSaved() {
+    events.add(new UserSaved(this));
+  }
+
   public UserId getId() {
     return id;
   }
@@ -51,6 +62,10 @@ public class User {
 
   public Instant getCreatedAt() {
     return createdAt;
+  }
+
+  public List<Event> getEvents() {
+    return events;
   }
 
   public static final class UserBuilder {

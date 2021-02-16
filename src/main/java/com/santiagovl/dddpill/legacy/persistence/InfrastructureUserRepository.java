@@ -3,9 +3,7 @@ package com.santiagovl.dddpill.legacy.persistence;
 import com.santiagovl.dddpill.legacy.domain.model.user.Email;
 import com.santiagovl.dddpill.legacy.domain.model.user.User;
 import com.santiagovl.dddpill.legacy.domain.model.user.repositories.UserRepository;
-import com.santiagovl.dddpill.legacy.persistence.email.UserJavaxEmailSender;
 import com.santiagovl.dddpill.legacy.persistence.mongo.UserMongoRepository;
-import com.santiagovl.dddpill.legacy.persistence.spam.UserRestSpamRepository;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -16,14 +14,8 @@ public class InfrastructureUserRepository implements UserRepository {
 
   private final UserMongoRepository userMongoRepository;
 
-  private final UserJavaxEmailSender userJavaxEmailSender;
-
-  private final UserRestSpamRepository userRestSpamRepository;
-
   @Override
   public User save(final User user) {
-    userJavaxEmailSender.send(user);
-    userRestSpamRepository.register(user);
     return userMongoRepository.save(user);
   }
 

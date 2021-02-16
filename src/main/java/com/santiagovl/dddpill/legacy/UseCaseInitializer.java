@@ -1,6 +1,7 @@
 package com.santiagovl.dddpill.legacy;
 
 import com.santiagovl.dddpill.legacy.application.user.RegisterUser;
+import com.santiagovl.dddpill.legacy.domain.events.EventPublisher;
 import com.santiagovl.dddpill.legacy.domain.model.user.repositories.UserRepository;
 import com.santiagovl.dddpill.legacy.domain.services.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,9 @@ public class UseCaseInitializer {
   @Autowired
   private UserRepository userRepository;
 
+  @Autowired
+  private EventPublisher eventPublisher;
+
   @Bean
   public UserValidator userValidator() {
     return new UserValidator(userRepository);
@@ -20,7 +24,7 @@ public class UseCaseInitializer {
 
   @Bean
   public RegisterUser registerUser(final UserValidator userValidator) {
-    return new RegisterUser(userValidator, userRepository);
+    return new RegisterUser(userValidator, userRepository, eventPublisher);
   }
 
 }
